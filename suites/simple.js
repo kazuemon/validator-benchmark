@@ -101,6 +101,9 @@ const obj = {
 // ---- tv4 ----
 (function() {
 	const tv4 = require('tv4');
+	const tv4Formats = require('tv4-formats');
+	const tv4Validator = tv4.freshApi();
+	tv4Validator.addFormat(tv4Formats);
 
 	const constraints = {
 		type: "object",
