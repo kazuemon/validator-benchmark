@@ -98,7 +98,32 @@ const obj = {
 
 }());
 
+// ---- tv4 ----
+(function() {
+	const tv4 = require('tv4');
 
+	const constraints = {
+		type: "object",
+		properties: {
+			name: { type: "string", minLength: 4, maxLength: 25 },
+			email: { type: "string", format: "email" },
+			firstName: { type: "string" },
+			phone: { type: "string" },
+			age: { type: "integer", minimum: 18 }
+		},
+		required: [
+			"name",
+			"email",
+			"firstName",
+			"phone",
+			"age"
+		]
+	}
+
+	bench.add("tv4", () => {
+		return tv4.validate(obj, constraints);
+	});
+}());
 
 // ---- ajv ----
 (function() {
