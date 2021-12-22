@@ -121,7 +121,9 @@ const obj = {
 	}
 
 	bench.add("tv4", () => {
-		return tv4.validate(obj, constraints);
+		let res = tv4.validate(obj, constraints);
+		if (!res)
+			throw new Error("Validation error!", tv4.error);
 	});
 }());
 
